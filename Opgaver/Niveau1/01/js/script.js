@@ -4,8 +4,6 @@ let buttonElement = document.querySelector('#my-button');
 //Add an event listener that invokoes our "changeButtonColor"-function whenever the user clicks the button.
 buttonElement.addEventListener("click", changeButtonColor);
 
-
-
 function changeButtonColor(){
     //Pick Random HSL Values
     let r_h = pickRandomNumber(360);
