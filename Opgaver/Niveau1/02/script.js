@@ -5,12 +5,10 @@ let values = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log(formEle, selectEle1)
 runAndRender();
 
-
 function submit(event){
     calculateRatio(selectEle1.value, selectEle2.value);
     event.preventDefault();
 }
-
 
 function runAndRender() {
     console.log(new Date().toString());
@@ -27,16 +25,14 @@ function calculateRatio(value1, value2) {
 
     console.log(value1, value2);
     if (value1 != 0 && value2 != 0) {
-        ratio = value1 / value2;
+        ratio = (value1 / value2)
+        ratio = +parseFloat(ratio).toFixed(3);
         resultEle.innerHTML = `Forholdet mellem de to værdier er ${ratio}`;
     }else{
         ratio = null;
         resultEle.innerHTML = "Vælg venligst et andet tal end 0!";
     }
-    
-
 }
-
 
 function populateAllSelectEles() {
     populateSelectEle(selectEle1);
