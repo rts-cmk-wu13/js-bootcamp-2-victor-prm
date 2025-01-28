@@ -8,9 +8,9 @@ buttonElement.addEventListener("click", changeButtonColor);
 
 function changeButtonColor(){
     //Pick Random HSL Values
-    let r_h = Math.floor(Math.random()*360);
-    let r_s = Math.floor(Math.random()*100);
-    let r_l = Math.floor(Math.random()*100);
+    let r_h = pickRandomNumber(360);
+    let r_s = pickRandomNumber(100);
+    let r_l = pickRandomNumber(100);
 
     //Compose random HSL string
     let randomHSL = `hsl(${r_h} ${r_s}% ${r_l}%)`;
@@ -26,4 +26,8 @@ function changeButtonColor(){
     //Update the color styles of the button element
     buttonElement.style.backgroundColor = randomHSL;
     buttonElement.style.color = textColor;
+}
+
+function pickRandomNumber(max){
+    return Math.floor(Math.random()*max);
 }
