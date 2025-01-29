@@ -15,7 +15,7 @@ function updateSelection(elementClicked) {
     //console.log(elementClicked.nodeName, elementClicked.id)
     buttonsArray.forEach((element) => {
         isSelected = (element.dataset.selected === "true");
-       
+
         if (elementClicked.id != element.id) {
             //console.log(element.id, "set to false")
             isSelected = false;
@@ -23,14 +23,12 @@ function updateSelection(elementClicked) {
             //console.log(element.id, "set to true")
             isSelected = !isSelected;
         }
-        element.dataset.selected = isSelected;
-        console.log(element.dataset.selected)
 
-        if(isSelected){
+        if (isSelected) {
             elementClicked.className = "selected"
-        }else{
+        } else {
             element.removeAttribute("class")
         }
+        element.dataset.selected = isSelected;
     })
-    console.log(" ");
 }
