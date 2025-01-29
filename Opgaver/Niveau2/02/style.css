@@ -14,10 +14,13 @@ main{
 
 header{
     display: flex;
-    flex: 1 1 auto;
     background-color: lightblue;
     padding: 1rem;
-    
+    justify-content: space-between;
+}
+
+.header-left{
+    display: flex;
 }
 
 .header-logo-container{
@@ -60,6 +63,7 @@ header{
 
 .product-card-split{
     display: flex;
+    gap: 0.5rem;
 }
 
 .product-card-left{
@@ -68,13 +72,24 @@ header{
 
 .product-card-right{
     display: flex;
+    align-items: end;
     gap: 0.5rem;
 }
 
 .product-card-decrease-button, .product-card-increase-button{
+    height: fit-content;
     padding: 0.25rem 1.5rem;
     background-color: darkslategray;
     color: aliceblue;
     border: none;
     border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    &:hover{
+        background-color: darkcyan;
+    }
+}
+
+.total-price{
+    align-self: flex-end;
 }
