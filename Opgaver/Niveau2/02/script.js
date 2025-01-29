@@ -18,9 +18,16 @@ function createCard(item) {
                     <div class="product-card-info">
                         <h3>${item.name}</h3>
                         <p>${item.description}</p>
-                        <p class="price">Price: <span class="price-value">${item.price}</span>DKK</p>
-                        <p class="designer">Designer: <span class="designer">${item.designer}</span></p>
+                        <div class="product-card-split">
+                            <div class="product-card-left">
+                                <p class="price">Price: <span class="price-value">${item.price}</span>DKK</p>
+                                <p class="designer">Designer: <span class="designer">${item.designer}</span></p>
+                            </div>
+                            <div class="product-card-right">
+                                <button class="product-card-decrease-button">-</button>
+                                <button class="product-card-increase-button">+</button>
+                            </div>
+                        </div>
                     </div>
-                   
-                </article>`
+            </article>`
 }
