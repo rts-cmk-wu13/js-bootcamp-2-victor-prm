@@ -1,0 +1,28 @@
+:root{
+    --size: 8rem;
+}
+
+.selected {
+    background-color: green;
+    color: antiquewhite;
+}
+
+button, .test-div{
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 1rem;
+    margin: 0;
+}
+
+button{
+    font-size: 2rem;
+}
+
+.test-div{
+    display: inline-block;
+    padding: 0.25rem;
+    text-align: center;
+}
+
