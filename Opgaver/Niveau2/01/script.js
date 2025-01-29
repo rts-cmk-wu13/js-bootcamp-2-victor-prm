@@ -39,6 +39,5 @@ function updateSelection(elementClicked) {
 
         //update all buttons' selected data-attribute with the new isSelected Boolean
         element.dataset.selected = isSelected;
-
     })
 }
