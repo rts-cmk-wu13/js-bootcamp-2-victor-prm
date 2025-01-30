@@ -7,24 +7,24 @@ function populateProductContainer() {
 }
 
 function addProductCard(product) {
-    document.querySelector('.selected-deals-container').innerHTML += createCard(product);
+    document.querySelector('.selected-deals__container').innerHTML += createCard(product);
 
 }
 
 function createCard(item) {
-    return ` <article class="product-card">
-                    <img src="${item.imgSrc}" alt="black leather chair" class="product-card-image">
-                    <div class="product-card-info">
+    return ` <article class="product-card ${checkForDiscounts(item)}">
+                    <img class="product-card__image" src="${item.imgSrc}" alt="black leather chair">
+                    <div class="product-card__info">
                         <h3>${item.name}</h3>
                         <p>${item.description}</p>
-                        <div class="product-card-split">
-                            <div class="product-card-left">
-                                <p class="price">Price: <span class="price-value">${formatPrice(item.price)}</span>DKK</p>
-                                <p class="designer">Designer: <span class="designer">${item.designer}</span></p>
+                        <div class="product-card__split">
+                            <div class="product-card__left">
+                                <p class="product-card__price">Price: <span class="product-card__price-value">${formatPrice(item.price)}</span>DKK</p>
+                                <p class="product-card__designer">Designer: <span class="product-card__designer-value">${item.designer}</span></p>
                             </div>
-                            <div class="product-card-right">
-                                <button onclick="decreaseItemCount('${item.id}')" class="product-card-decrease-button">-</button>
-                                <button onclick="increaseItemCount('${item.id}')" class="product-card-increase-button">+</button>
+                            <div class="product-card__right">
+                                <button class="product-card__amount-button" onclick="decreaseItemCount('${item.id}')">-</button>
+                                <button class="product-card__amount-button" onclick="increaseItemCount('${item.id}')">+</button>
                             </div>
                         </div>
                     </div>
@@ -46,28 +46,22 @@ function increaseItemCount(itm) {
     updateShoppingCart();
 }
 
-let shoppingCart = [];
-let total = 0;
-function updateShoppingCart() {
-    total = 0;
-    products.forEach(product => {
-        if (product.count > 0) {
-            if(shoppingCart.includes(product) === false){
-                shoppingCart.push(product);
-            }
+function checkForDiscounts(itm) {
+    let discount = itm.discount;
+    if (discount && discount.length > 0) {
+        if (discount.includes("%")) {
+            let discountPercentage = discount.substring(0, discount.indexOf("%"));
+            discountPercentage = Number(discountPercentage);
+            itm.price = itm.price * (100 - discountPercentage) / 100;
         } else {
-            shoppingCart.pop(product);
+            itm.price = itm.price - Number(discount);
         }
-        total += product.count*product.price;
-    });
-    
-    if(total > 0){
-        total = formatPrice(total);
+        return "product-card--discount";
     }
-    document.querySelector('.total-price').innerHTML = total
+    return "";
 }
 
-function formatPrice(price){
+function formatPrice(price) {
     return p = new Intl.NumberFormat("da-dk").format(price)
 }
 

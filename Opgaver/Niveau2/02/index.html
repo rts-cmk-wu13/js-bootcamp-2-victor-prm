@@ -7,30 +7,32 @@
     <title>Black Leather Goods</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./products.js" defer></script>
+    <script src="./shoppingCart.js" defer></script>
     <script src="./script.js" defer></script>
+    
 </head>
 
 <body>
-    <header>
-        <div class="header-left">
-            <div class="header-logo-container">
-                <img src="./assets/chair-logo.svg" class="header-logo" alt="Company Logo">
+    <header class="header">
+        <div class="header__left">
+            <div class="header__logo-container">
+                <img src="./assets/chair-logo.svg" class="header__logo" alt="Company Logo">
             </div>
-            <div class="header-text">
+            <div class="header__text">
                 <h2>Black Leather Goods</h2>
                 <small>Craftsmanship is the new black</small>
             </div>
         </div>
 
-        <div class="header-right">
-            <h4>Total value in cart: <span class="total-price"></span>DKK</h4>
+        <div class="header__right">
+            <h4>Total value in cart: <span class="header__total-price">0</span>DKK</h4>
         </div>
 
     </header>
     <main>
         <section class="selected-deals">
             <h1>Selected Deals</h1>
-            <div class="selected-deals-container">
+            <div class="selected-deals__container">
             </div>
         </section>
     </main>
