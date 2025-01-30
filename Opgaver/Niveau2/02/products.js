@@ -3,7 +3,7 @@ let products = [
         name: "Barcelona Chair",
         designer: "Mies van der Rohe",
         price: 61000,
-        discount: "4000",
+        discount: "2380",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, repellat! Amet consectetur adipisicing elit.",
         imgSrc: "./assets/barcelona.webp",
         count: 0,
