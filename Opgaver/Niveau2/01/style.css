@@ -2,6 +2,10 @@
     --size: 8rem;
 }
 
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .selected {
     background-color: green;
     color: antiquewhite;
