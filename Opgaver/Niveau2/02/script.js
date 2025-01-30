@@ -41,15 +41,20 @@ function createCard(item) {
 function checkForDiscounts(itm) {
     let discount = itm.discount;
     if (discount && discount.length > 0) {
+        //Discount can be either in % or absolute (from object)
+        //Percentage discount
         if (discount.includes("%")) {
             let discountPercentage = discount.substring(0, discount.indexOf("%"));
             discountPercentage = Number(discountPercentage);
             itm.price = itm.price * (100 - discountPercentage) / 100;
+        //Absolute discount
         } else {
             itm.price = itm.price - Number(discount);
         }
+        //return BEM modifier
         return "product-card--discount";
     }
+    //return BEM nothing
     return "";
 }
 
