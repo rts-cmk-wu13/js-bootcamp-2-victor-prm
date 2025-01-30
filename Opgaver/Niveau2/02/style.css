@@ -12,33 +12,34 @@ main{
 }
 
 
-header{
+.header{
     display: flex;
     background-color: lightblue;
     padding: 1rem;
     justify-content: space-between;
 }
 
-.header-left{
+.header__left{
     display: flex;
 }
 
-.header-logo-container{
+.header__logo-container{
     height: 3rem;
     width: 3rem;
 }
 
-.header-logo{
+.header__logo{
     width: 100%;
     height: 100%;
 }
 
-.selected-deals-container{
+.selected-deals__container{
     display: flex;
     gap: 1rem;
 }
 
 .product-card{
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: aliceblue;
@@ -49,36 +50,41 @@ header{
     width: 0;
 }
 
-.product-card-image{
+.product-card__image{
     height: 25rem;
     object-fit: cover;
 }
 
-.product-card-info{
+.product-card__info{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 10rem;
     padding: 1rem;
     gap: 0.75rem;
 }
 
-.product-card-split{
+.product-card__split{
     display: flex;
     gap: 0.5rem;
 }
 
-.product-card-left{
+.product-card__left{
     width: 100%;
 }
 
-.product-card-right{
+.product-card__right{
     display: flex;
     align-items: end;
     gap: 0.5rem;
 }
 
-.product-card-decrease-button, .product-card-increase-button{
-    height: fit-content;
-    padding: 0.25rem 1.5rem;
+.product-card__price-value, .product-card__designer-value{
+  font-weight: 600;
+}
+
+.product-card__amount-button{
+    padding: 0.25rem 1rem;
     background-color: darkslategray;
     color: aliceblue;
     border: none;
@@ -90,6 +96,22 @@ header{
     }
 }
 
-.total-price{
+.header__total-price{
     align-self: flex-end;
+}
+
+.product-card--discount{
+    background-color: lightgoldenrodyellow;
+}
+
+.product-card--discount::before{
+    background-image:url(./assets/sale.png);
+    position: absolute;
+    background-size: 8rem 8rem;
+    display: inline-block;
+    width:  8rem; 
+    height: 8rem;
+    content:"";
+    right: 0%;
+    margin: 0.25rem;
 }
