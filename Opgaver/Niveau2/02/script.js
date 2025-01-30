@@ -1,25 +1,31 @@
 populateProductContainer();
 
+//Create new cards from products object array
 function populateProductContainer() {
     products.forEach(product => {
         addProductCard(product);
     });
 }
 
+//Place new card in deals__container
 function addProductCard(product) {
     document.querySelector('.selected-deals__container').innerHTML += createCard(product);
 
 }
 
+//Dynamic product card template with "checkForDiscounts(item)"-BEM modifier
 function createCard(item) {
     return ` <article class="product-card ${checkForDiscounts(item)}">
                     <img class="product-card__image" src="${item.imgSrc}" alt="black leather chair">
                     <div class="product-card__info">
-                        <h3>${item.name}</h3>
+                        <div class="product-card__header">
+                            <h3>${item.name}</h3>
+                            <div class="product-card__count" id="count-${item.id}">0</div>
+                        </div>
                         <p>${item.description}</p>
                         <div class="product-card__split">
                             <div class="product-card__left">
-                                <p class="product-card__price">Price: <span class="product-card__price-value">${formatPrice(item.price)}</span>DKK</p>
+                                <p class="product-card__price">Price: <span class="product-card__price-value">${formatPrice(item.price)}</span> DKK</p>
                                 <p class="product-card__designer">Designer: <span class="product-card__designer-value">${item.designer}</span></p>
                             </div>
                             <div class="product-card__right">
@@ -31,41 +37,29 @@ function createCard(item) {
             </article>`
 }
 
-function decreaseItemCount(itm) {
-    let currentItem = products.find(item => item.id === itm);
-    currentItem.count--;
-    currentItem.count = clampZero(currentItem.count);
-    console.log(currentItem.count)
-    updateShoppingCart();
-}
-
-function increaseItemCount(itm) {
-    let currentItem = products.find(item => item.id === itm);
-    currentItem.count++;
-    console.log(currentItem.count)
-    updateShoppingCart();
-}
-
+//Check if product has a discout (absolute price or perecentage), and add BEM modifier and change price if so
 function checkForDiscounts(itm) {
     let discount = itm.discount;
     if (discount && discount.length > 0) {
+        //Discount can be either in % or absolute (from object)
+        //Percentage discount
         if (discount.includes("%")) {
             let discountPercentage = discount.substring(0, discount.indexOf("%"));
             discountPercentage = Number(discountPercentage);
             itm.price = itm.price * (100 - discountPercentage) / 100;
+        //Absolute discount
         } else {
             itm.price = itm.price - Number(discount);
         }
+        //return BEM modifier
         return "product-card--discount";
     }
+    //return BEM nothing
     return "";
 }
 
+//Format price with "." on thousands
 function formatPrice(price) {
     return p = new Intl.NumberFormat("da-dk").format(price)
-}
-
-function clampZero(num) {
-    return num < 0 ? 0 : num;
 }
 
