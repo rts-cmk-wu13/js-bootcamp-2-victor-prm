@@ -19,6 +19,15 @@ let products = [
         id: 'product1'
     },
     {
+        name: "PK22",
+        designer: "Poul Kjærholm",
+        price: 43000,
+        description: " Voluptatibus, repellat! Adipisicing. Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+        imgSrc: "./assets/pk22.png",
+        count: 0,
+        id: 'product2'
+    },
+    {
         name: "Wegner CH28",
         designer: "Hans Wegner",
         price: 39000,
@@ -26,6 +35,15 @@ let products = [
         description: "Dolor sit amet consectetur adipisicing elit. Voluptatibus, repellat! Lorem Ipsum.",
         imgSrc: "./assets/ch28.jpg",
         count: 0,
-        id: 'product2'
-    }
+        id: 'product3'
+    },
+    {
+        name: "Ox Chair",
+        designer: "Hans Wegner",
+        price: 73400,
+        description: " Adipisicing. Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+        imgSrc: "./assets/ox.webp",
+        count: 0,
+        id: 'product4'
+    },
 ]

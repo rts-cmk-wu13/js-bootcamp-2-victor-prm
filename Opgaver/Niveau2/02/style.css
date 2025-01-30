@@ -38,7 +38,8 @@ main {
 }
 
 .selected-deals__container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(24rem, 1fr));
     gap: 1rem;
 }
 
@@ -50,8 +51,7 @@ main {
     border: 1px solid gainsboro;
     border-radius: 0.5rem;
     overflow: clip;
-    flex: 1 1 0;
-    width: 0;
+    width: 100%;
 }
 
 .product-card__image {
