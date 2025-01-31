@@ -25,7 +25,7 @@ function createCard(item) {
                         <p>${item.description}</p>
                         <div class="product-card__split">
                             <div class="product-card__left">
-                                <p class="product-card__price">Price: <span class="product-card__price-value">${formatPrice(item.price)}</span> DKK</p>
+                                <p class="product-card__price">Price: <span class="product-card__price-value" id="price-${item.id}">${showPrice(item)}</span> DKK</p>
                                 <p class="product-card__designer">Designer: <span class="product-card__designer-value">${item.designer}</span></p>
                             </div>
                             <div class="product-card__right">
@@ -41,6 +41,8 @@ function createCard(item) {
 function checkForDiscounts(itm) {
     let discount = itm.discount;
     if (discount && discount.length > 0) {
+        itm.oldPrice = itm.price;
+
         //Discount can be either in % or absolute (from object)
         //Percentage discount
         if (discount.includes("%")) {
@@ -51,6 +53,8 @@ function checkForDiscounts(itm) {
         } else {
             itm.price = itm.price - Number(discount);
         }
+         
+
         //return BEM modifier
         return "product-card--discount";
     }
@@ -59,7 +63,19 @@ function checkForDiscounts(itm) {
 }
 
 //Format price with "." on thousands
-function formatPrice(price) {
+function showPrice(itm) {
+    console.log(itm.id,document.querySelector(`#price-${itm.id}`));
+    let content = "";
+
+    if(itm.oldPrice){
+        content += `<span class="product-card__old-price">${formatPrice(itm.oldPrice)}</span>`
+    }
+    content += ` ${formatPrice(itm.price)}`
+       
+   return content;
+}
+
+function formatPrice(price){
     return p = new Intl.NumberFormat("da-dk").format(price)
 }
 
